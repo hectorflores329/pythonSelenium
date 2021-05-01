@@ -1,7 +1,7 @@
 name: Python Selenium
 
 on:
-    #push
+    push
   
 jobs:
   build:

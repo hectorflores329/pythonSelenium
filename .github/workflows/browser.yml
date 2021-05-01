@@ -1,6 +1,6 @@
 name: Browser
 
-on: 
+on:
     push
 
 jobs:
