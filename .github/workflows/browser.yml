@@ -1,13 +1,14 @@
-name: build
+name: Browser
 
-on: [push, pull_request]
+on: 
+    push
 
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [ '3.5', '3.6', '3.7', '3.8' ]
+        python-version: 3.7
     name: Python ${{ matrix.python-version }}
     steps:
     - uses: actions/checkout@v1
@@ -17,6 +18,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Set Up Chromedriver
       run: |
+        pip install -r requirements.txt
         sudo apt-get update
         sudo apt-get --only-upgrade install google-chrome-stable
         sudo apt-get -yqq install chromium-chromedriver
