@@ -21,4 +21,4 @@ def datos():
     driver.close()
 
 if __name__ == '__main__':
-    print("Este es un mensaje.")
+    datos()
