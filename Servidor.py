@@ -5,6 +5,8 @@ import time
 def getDriver():
     
     options = Options()
+    options.log.level = "trace"
+    options.add_argument("--headless")
     options.set_preference("browser.download.folderList", 2)
     options.set_preference("browser.download.manager.showWhenStarting", False)
     options.set_preference("browser.helperApps.neverAsk.saveToDisk", "text/csv") #, "application/json")
