@@ -9,6 +9,8 @@ def getDriver():
     options = Options()
     options.log.level = "trace"
     options.add_argument("--headless")
+    options.set_preference("browser.download.manager.showWhenStarting", False)
+    options.set_preference("browser.helperApps.neverAsk.saveToDisk", "text/csv")
     driver = webdriver.Firefox(options=options)
     driver.set_page_load_timeout("60")
     driver.get("http://cognos.deis.cl/ibmcognos/cgi-bin/cognos.cgi?b_action=cognosViewer&ui.action=run&ui.object=/content/folder%5B@name=%27PUB%27%5D/folder%5B@name=%27REPORTES%27%5D/folder%5B@name=%27Atenciones%20de%20Urgencia%27%5D/report%5B@name=%27Atenciones%20Urgencia%20-%20Vista%20por%20semanas%20-%20Servicios%27%5D&ui.name=Atenciones%20Urgencia%20-%20Vista%20por%20semanas%20-%20Servicios&run.outputFormat=&run.prompt=true#")
@@ -32,6 +34,7 @@ def saveCSV(tabla, anio, region, tipo_Establecimiento, nombre_establecimiento, n
     df.to_csv("tablas/" + nombreArchivo, index=False)
 
 def descargarTablas():
+    print("Proceso de descarga iniciado...")
     driver = getDriver()
     time.sleep(5)
 
@@ -42,6 +45,8 @@ def descargarTablas():
     for i in range(len(yearsValues)):
         yers = driver.find_element_by_xpath("/html/body/form[1]/table/tbody/tr[3]/td/div/div[1]/table/tbody/tr/td/div[2]/div/div[2]/table/tbody/tr[1]/td[1]/table/tbody/tr[2]/td/div/table/tbody/tr/td/div[1]/select")
         yearsValues = yers.find_elements_by_tag_name("option")
+
+        print(yers.text)
 
         selectYears = Select(yers)
         selectYears.deselect_all()
@@ -57,6 +62,8 @@ def descargarTablas():
             region = driver.find_element_by_xpath("/html/body/form[1]/table/tbody/tr[3]/td/div/div[1]/table/tbody/tr/td/div[2]/div/div[2]/table/tbody/tr[2]/td[1]/div/table/tbody/tr[2]/td[1]/div/table/tbody/tr/td/div[1]/select")
             yearsRegion = region.find_elements_by_tag_name("option")
 
+            print(region.text)
+
             selectRegion = Select(region)
             selectRegion.deselect_all()
 
@@ -71,6 +78,8 @@ def descargarTablas():
                 stableType = driver.find_element_by_xpath("/html/body/form[1]/table/tbody/tr[3]/td/div/div[1]/table/tbody/tr/td/div[2]/div/div[2]/table/tbody/tr[2]/td[2]/div/table/tbody/tr[2]/td[1]/div/table/tbody/tr/td/div[1]/select")
                 yearsStableType = stableType.find_elements_by_tag_name("option")
 
+                print(stableType.text)
+
                 selectStableType = Select(stableType)
                 selectStableType.deselect_all()
 
@@ -84,6 +93,8 @@ def descargarTablas():
                 for l in range(len(yearsStable)):
                     stable = stableType = driver.find_element_by_xpath("/html/body/form[1]/table/tbody/tr[3]/td/div/div[1]/table/tbody/tr/td/div[2]/div/div[2]/table/tbody/tr[2]/td[3]/div/table/tbody/tr[2]/td/div/table/tbody/tr/td/div[1]/select")
                     yearsStable = stable.find_elements_by_tag_name("option")
+
+                    print(stable.text)
 
                     selectStable = Select(stable)
                     selectStable.deselect_all()
