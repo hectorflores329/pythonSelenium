@@ -2,6 +2,7 @@ import pandas as pd
 import time
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.support.ui import Select
 
 def getDriver():
     
