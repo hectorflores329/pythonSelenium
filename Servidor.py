@@ -108,8 +108,9 @@ def descargarTablas():
 
                         df = pd.DataFrame(data=dataF)
                         df["Fecha"] = yearsValues[i].text
-                        df.to_csv("test4.csv", index=False)                      
-                        print(nombreArchivo)    
+                        df.to_csv(str(nombreArchivo), index=False)                      
+                        print(nombreArchivo) 
+
                     except:
                         print("No se ha guardado la tabla.")
                         print(nombreArchivo)
