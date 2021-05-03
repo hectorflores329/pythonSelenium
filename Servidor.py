@@ -121,7 +121,7 @@ def descargarTablas():
 
                         df = pd.DataFrame(data=dataF)
                         print(df)
-                        df.to_excel("test.csv", index=False)                      
+                        df.to_csv("test.csv", index=False)                      
                         print(nombreArchivo)
 
                     except:
