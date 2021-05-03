@@ -16,6 +16,7 @@ def getDriver():
 
 def saveCSV(tabla, anio, region, tipo_Establecimiento, nombre_establecimiento, nombreArchivo):
     html = tabla[0].get_attribute('innerHTML')
+    print(html)
     html = '<table> ' + html + ' </table>'
     html = html.replace(".","")
     data = pd.read_html(html, skiprows=2)
@@ -29,7 +30,7 @@ def saveCSV(tabla, anio, region, tipo_Establecimiento, nombre_establecimiento, n
     df["Region"] = region
     df["Tipo Establecimiento"] = tipo_Establecimiento 
     df["Nombre establecimiento"] = nombre_establecimiento                
-    df.to_csv("tablas/" + nombreArchivo, index=False, encoding="UTF-8")
+    df.to_csv("tablas/" + nombreArchivo, index=False, encoding="UTF-8") # 
 
 def descargarTablas():
     driver = getDriver()
