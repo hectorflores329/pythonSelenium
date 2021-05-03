@@ -1,13 +1,8 @@
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.firefox.firefox_profile import FirefoxProfile
-from selenium.webdriver.firefox.options import Options
-import http.client, urllib.request, urllib.parse, urllib.error, base64
-import shutil
-import datetime
-from selenium.webdriver.support.ui import Select
-import time
 import pandas as pd
+import time
+from selenium import webdriver
+from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.support.ui import Select
 
 def getDriver():
     
