@@ -108,7 +108,7 @@ def descargarTablas():
 
                         df = pd.DataFrame(data=dataF)
                         print(df)
-                        df.to_csv("test2.csv", index=False)                      
+                        df.to_csv("test3.csv", index=False)                      
                         print(nombreArchivo)    
                     except:
                         print("No se ha guardado la tabla.")
