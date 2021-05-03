@@ -30,7 +30,7 @@ def saveCSV(tabla, anio, region, tipo_Establecimiento, nombre_establecimiento, n
     df["Region"] = region
     df["Tipo Establecimiento"] = tipo_Establecimiento 
     df["Nombre establecimiento"] = nombre_establecimiento                
-    df.to_csv("tablas/" + nombreArchivo, index=False, encoding="UTF-8") # 
+    df.to_csv(nombreArchivo, index=False, encoding="UTF-8") # 
 
 def descargarTablas():
     driver = getDriver()
