@@ -31,6 +31,23 @@ def getDriver():
     driver.get("http://cognos.deis.cl/ibmcognos/cgi-bin/cognos.cgi?b_action=cognosViewer&ui.action=run&ui.object=/content/folder%5B@name=%27PUB%27%5D/folder%5B@name=%27REPORTES%27%5D/folder%5B@name=%27Atenciones%20de%20Urgencia%27%5D/report%5B@name=%27Atenciones%20Urgencia%20-%20Vista%20por%20semanas%20-%20Servicios%27%5D&ui.name=Atenciones%20Urgencia%20-%20Vista%20por%20semanas%20-%20Servicios&run.outputFormat=&run.prompt=true#")
     return driver
 
+def saveCSV(tabla, anio, region, tipo_Establecimiento, nombre_establecimiento, nombreArchivo):
+    html = tabla[0].get_attribute('innerHTML')
+    html = '<table> ' + html + ' </table>'
+    html = html.replace(".","")
+    data = pd.read_html(html, skiprows=2)
+    df = data[0]
+    columnas = list(df.columns)
+    columnas[0] = "Total"
+    columnas.insert(0,"Urgencia")
+    columnas.pop(len(columnas) - 1)
+    df.columns = columnas
+    df["Fecha"] = anio
+    df["Region"] = region
+    df["Tipo Establecimiento"] = tipo_Establecimiento 
+    df["Nombre establecimiento"] = nombre_establecimiento                
+    df.to_csv(nombreArchivo, index=False, encoding="UTF-8") # 
+
 def descargarTablas():
     driver = getDriver()
     time.sleep(5)
@@ -117,13 +134,8 @@ def descargarTablas():
                     nombreArchivo = yearsValues[i].text + "_" + yearsRegion[j].text + "_"  + yearsStableType[k].text + "_" + yearsStable[l].text + ".csv"
 
                     try:
-                        dataF = {'Columna 1': [1, 2], 'Columna 2': [3, 4]}
-
-                        df = pd.DataFrame(data=dataF)
-                        print(df)
-                        df.to_csv("test.csv", index=False)                      
                         print(nombreArchivo)
-
+                        saveCSV(tabla, yearsValues[i].text, yearsRegion[j].text, yearsStableType[k].text, yearsStable[l].text, nombreArchivo)
                     except:
                         print("No se ha guardado la tabla.")
                         print(nombreArchivo)
