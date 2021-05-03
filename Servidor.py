@@ -17,7 +17,7 @@ def getDriver():
     return driver
 
 def saveCSV(tabla, anio, region, tipo_Establecimiento, nombre_establecimiento, nombreArchivo):
-    html = tabla[0].get_attribute('innerHTML')
+    html = tabla[0].get_attribute('outerHTML')
     html = '<table> ' + html + ' </table>'
     html = html.replace(".","")
     data = pd.read_html(html[0], skiprows=2)
@@ -121,7 +121,6 @@ def descargarTablas():
 
                     try:
                         print(nombreArchivo)
-                        print(tabla)
                         saveCSV(tabla, yearsValues[i].text, yearsRegion[j].text, yearsStableType[k].text, yearsStable[l].text, nombreArchivo)
                     except:
                         print("No se ha guardado la tabla.")
