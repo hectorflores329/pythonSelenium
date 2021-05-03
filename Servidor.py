@@ -125,17 +125,5 @@ def descargarTablas():
 
     driver.close()
 
- '''   
-def datos():
-
-    driver = getDriver()
-    time.sleep(5)
-
-    title = driver.find_element_by_xpath("/html/body/form[1]/table/tbody/tr[3]/td/div/div[1]/table/tbody/tr/td/div[2]/div/div[1]/span")
-    print(title.text)
-
-    driver.close()
-'''
-
 if __name__ == '__main__':
     descargarTablas()
