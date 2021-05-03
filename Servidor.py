@@ -17,10 +17,10 @@ def getDriver():
     return driver
 
 def saveCSV(tabla, anio, region, tipo_Establecimiento, nombre_establecimiento, nombreArchivo):
-    html = tabla[0].get_attribute('outerHTML')
+    html = tabla[0].get_attribute('innerHTML')
     html = '<table> ' + html + ' </table>'
     html = html.replace(".","")
-    data = pd.read_html(html[0], skiprows=2)
+    data = pd.read_html(str(html), skiprows=2)
     print("HOLAAAAAAAAAAAAA")
     df = data[0]
     columnas = list(df.columns)
