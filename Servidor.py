@@ -17,31 +17,20 @@ def getDriver():
 def saveCSV(tabla, anio, region, tipo_Establecimiento, nombre_establecimiento, nombreArchivo):
     html = tabla[0].get_attribute('innerHTML')
     html = '<table> ' + html + ' </table>'
-    print("1" + html)
     html = html.replace(".","")
-    print("2" + html)
     data = pd.read_html(html, skiprows=2)
-    print("3" + data)
     df = data[0]
-    print("4" + df)
+    print(df)
     columnas = list(df.columns)
-    print("5" + columnas)
     columnas[0] = "Total"
-    print("6" + columnas[0])
     columnas.insert(0,"Urgencia")
     columnas.pop(len(columnas) - 1)
     df.columns = columnas
-    print("7" + df)
     df["Fecha"] = anio
     df["Region"] = region
     df["Tipo Establecimiento"] = tipo_Establecimiento 
-    df["Nombre establecimiento"] = nombre_establecimiento 
-    print(anio)             
-    print(region)
-    print(tipo_Establecimiento)
-    print(nombre_establecimiento)
-    df.to_csv(nombreArchivo, index=False, encoding="UTF-8") #
-    df.to_excel(nombreArchivo, index=False, encoding="UTF-8") # 
+    df["Nombre establecimiento"] = nombre_establecimiento                
+    df.to_csv(nombreArchivo, index=False, encoding="UTF-8") # 
 
 def descargarTablas():
     driver = getDriver()
