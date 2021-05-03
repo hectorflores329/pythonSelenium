@@ -118,6 +118,7 @@ def descargarTablas():
 
                     try:
                         print(nombreArchivo)
+                        print(tabla)
                         saveCSV(tabla, yearsValues[i].text, yearsRegion[j].text, yearsStableType[k].text, yearsStable[l].text, nombreArchivo)
                     except:
                         print("No se ha guardado la tabla.")
