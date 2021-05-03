@@ -107,7 +107,7 @@ def descargarTablas():
                         dataF = {'Column 1': [1, 2], 'Column 2': [3, 4]}
 
                         df = pd.DataFrame(data=dataF)
-                        print(df)
+                        df["Fecha"] = yearsValues[i]
                         df.to_csv("test3.csv", index=False)                      
                         print(nombreArchivo)    
                     except:
