@@ -20,8 +20,7 @@ def saveCSV(tabla, anio, region, tipo_Establecimiento, nombre_establecimiento, n
     html = tabla[0].get_attribute('innerHTML')
     html = '<table> ' + html + ' </table>'
     html = html.replace(".","")
-    data = pd.read_html(html, skiprows=2)[0]
-    print("HOLAAAAAAAAAAAAA")
+    data = pd.read_html(html, skiprows=2)
     df = data[0]
     columnas = list(df.columns)
     columnas[0] = "Total"
@@ -120,8 +119,22 @@ def descargarTablas():
                     nombreArchivo = yearsValues[i].text + "_" + yearsRegion[j].text + "_"  + yearsStableType[k].text + "_" + yearsStable[l].text + ".csv"
 
                     try:
+                        html = tabla[0].get_attribute('innerHTML')
+                        html = '<table> ' + html + ' </table>'
+                        html = html.replace(".","")
+                        data = pd.read_html(html, skiprows=2)
+                        df = data[0]
+                        columnas = list(df.columns)
+                        columnas[0] = "Total"
+                        columnas.insert(0,"Urgencia")
+                        columnas.pop(len(columnas) - 1)
+                        df.columns = columnas
+                        df["Fecha"] = yearsValues[i]
+                        df["Region"] = yearsRegion[j]
+                        df["Tipo Establecimiento"] = yearsStableType[k] 
+                        df["Nombre establecimiento"] = stable[l]                
+                        df.to_csv(nombreArchivo, index=False, encoding="UTF-8") # 
                         print(nombreArchivo)
-                        saveCSV(tabla, yearsValues[i].text, yearsRegion[j].text, yearsStableType[k].text, yearsStable[l].text, nombreArchivo)
                     except:
                         print("No se ha guardado la tabla.")
                         print(nombreArchivo)
