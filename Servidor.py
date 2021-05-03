@@ -100,15 +100,15 @@ def descargarTablas():
                     yearsStable = stable.find_elements_by_tag_name("option")
 
                     tabla = driver.find_elements_by_class_name("xt")
-                    nombreArchivo = yearsValues[i].text + "_" + yearsRegion[j].text + "_"  + yearsStableType[k].text + "_" + yearsStable[l].text + ".csv"
+                    nombreArchivo = yearsValues[i].text + "_" + yearsRegion[j].text + "_"  + yearsStableType[k].text + "_" + yearsStable[l].text + ".xlsx"
 
                     try:
-
+                        
                         dataF = {'Column 1': [1, 2], 'Column 2': [3, 4]}
 
                         df = pd.DataFrame(data=dataF)
                         df["Fecha"] = yearsValues[i].text
-                        df.to_csv(str(nombreArchivo), index=False)                      
+                        df.to_excel(str(nombreArchivo), index=False)                      
                         print(nombreArchivo) 
 
                     except:
