@@ -19,9 +19,9 @@ def saveCSV(tabla, anio, region, tipo_Establecimiento, nombre_establecimiento, n
     html = '<table> ' + html + ' </table>'
     html = html.replace(".","")
     data = pd.read_html(html, skiprows=2)
-    print("UNOOOO 1111111111111" + data)
+    print("UNOOOO 1111111111111" + data.text)
     df = data[0]
-    print("DOOOOS 2222222222222" + data[0])
+    print("DOOOOS 2222222222222" + data[0].text)
     columnas = list(df.columns)
     columnas[0] = "Total"
     columnas.insert(0,"Urgencia")
