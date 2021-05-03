@@ -4,20 +4,6 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.ui import Select
 
-import datetime
-import http.client, urllib.request, urllib.parse, urllib.error, base64
-from tweepy.streaming import StreamListener
-from tweepy import OAuthHandler
-from tweepy import Stream
-import tweepy
-from azure.ai.textanalytics import TextAnalyticsClient
-from azure.core.credentials import AzureKeyCredential
-import requests
-import json  
-import codecs
-import numpy as np
-import wget
-import http.client, urllib.request, urllib.parse, urllib.error, base64
 
 def getDriver():
     
