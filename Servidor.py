@@ -20,7 +20,7 @@ def saveCSV(tabla, anio, region, tipo_Establecimiento, nombre_establecimiento, n
     html = tabla[0].get_attribute('innerHTML')
     html = '<table> ' + html + ' </table>'
     html = html.replace(".","")
-    data = pd.read_html(str(html), skiprows=2)
+    data = pd.read_html(html, skiprows=2)[0]
     print("HOLAAAAAAAAAAAAA")
     df = data[0]
     columnas = list(df.columns)
