@@ -19,6 +19,10 @@ def getDriver():
 
 def saveCSV(tabla, anio, region, tipo_Establecimiento, nombre_establecimiento, nombreArchivo):
     html = tabla[0].get_attribute('innerHTML')
+    print("UNO 11111 " + html)
+    html = '<table> ' + str(html) + ' </table>'
+    print("DOS 2222 " + html)
+    html = html.replace(".","")
     data = pd.read_html(html, skiprows=2)
     print(data.text)
     df = data[0]
