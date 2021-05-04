@@ -5,22 +5,17 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.ui import Select
 from bs4 import BeautifulSoup
 
-def saveCSV(tabla, anio, region, tipo_Establecimiento, nombre_establecimiento, nombreArchivo):
-    html = tabla[0].get_attribute('innerHTML')
-    html = '<table>' + html.text + '</table>'
-    html = html.replace(".","")
-    data = pd.read_html(html, skiprows=2)
-    df = data[0]
-    columnas = list(df.columns)
-    columnas[0] = "Total"
-    columnas.insert(0,"Urgencia")
-    columnas.pop(len(columnas) - 1)
-    df.columns = columnas
-    df["Fecha"] = anio
-    df["Region"] = region
-    df["Tipo Establecimiento"] = tipo_Establecimiento 
-    df["Nombre establecimiento"] = nombre_establecimiento                
-    df.to_csv(nombreArchivo, index=False, encoding="UTF-8") # 
+def getDriver():
+    
+    options = Options()
+    options.log.level = "trace"
+    options.add_argument("--headless")
+    options.set_preference("browser.download.manager.showWhenStarting", False)
+    options.set_preference("browser.helperApps.neverAsk.saveToDisk", "text/csv")
+    driver = webdriver.Firefox(options=options)
+    driver.set_page_load_timeout("60")
+    driver.get("http://cognos.deis.cl/ibmcognos/cgi-bin/cognos.cgi?b_action=cognosViewer&ui.action=run&ui.object=/content/folder%5B@name=%27PUB%27%5D/folder%5B@name=%27REPORTES%27%5D/folder%5B@name=%27Atenciones%20de%20Urgencia%27%5D/report%5B@name=%27Atenciones%20Urgencia%20-%20Vista%20por%20semanas%20-%20Servicios%27%5D&ui.name=Atenciones%20Urgencia%20-%20Vista%20por%20semanas%20-%20Servicios&run.outputFormat=&run.prompt=true#")
+    return driver
 
 def descargarTablas():
     driver = getDriver()
@@ -108,10 +103,8 @@ def descargarTablas():
                     nombreArchivo = yearsValues[i].text + "_" + yearsRegion[j].text + "_"  + yearsStableType[k].text + "_" + yearsStable[l].text + ".csv"
 
                     try:
-                        
                         df = pd.read_csv("tabla.txt")
                         df.to_csv("tabla_de_ejemplo.csv", index=False)
-                        
                     except:
                         print("No se ha guardado la tabla.")
                         print(nombreArchivo)
