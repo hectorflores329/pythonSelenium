@@ -3,7 +3,7 @@ import time
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.ui import Select
-
+from bs4 import BeautifulSoup
 
 def getDriver():
     
