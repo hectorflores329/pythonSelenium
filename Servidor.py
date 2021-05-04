@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.ui import Select
 
+
 def getDriver():
     
     options = Options()
@@ -18,8 +19,6 @@ def getDriver():
 
 def saveCSV(tabla, anio, region, tipo_Establecimiento, nombre_establecimiento, nombreArchivo):
     html = tabla[0].get_attribute('innerHTML')
-    html = '<table> ' + html + ' </table>'
-    html = html.replace(".","")
     data = pd.read_html(html, skiprows=2)
     print(data.text)
     df = data[0]
