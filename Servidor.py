@@ -19,10 +19,7 @@ def getDriver():
 
 def saveCSV(tabla, anio, region, tipo_Establecimiento, nombre_establecimiento, nombreArchivo):
     html = tabla[0].get_attribute('innerHTML')
-    html = '<table>' + str(html) + '</table>'
-    soup = BeautifulSoup(html, 'lxml')
-    table = soup.find_all('table')[0]
-    print(table)
+    html = '<table>' + html.text + '</table>'
     html = html.replace(".","")
     data = pd.read_html(html, skiprows=2)
     df = data[0]
