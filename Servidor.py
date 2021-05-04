@@ -103,8 +103,7 @@ def descargarTablas():
                     nombreArchivo = yearsValues[i].text + "_" + yearsRegion[j].text + "_"  + yearsStableType[k].text + "_" + yearsStable[l].text + ".csv"
 
                     try:
-                        df = pd.read_csv("tabla.txt")
-                        df.to_csv("tabla_de_ejemplo.csv", index=False)
+                        pass
                     except:
                         print("No se ha guardado la tabla.")
                         print(nombreArchivo)
