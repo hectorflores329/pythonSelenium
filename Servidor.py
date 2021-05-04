@@ -103,7 +103,8 @@ def descargarTablas():
                     nombreArchivo = yearsValues[i].text + "_" + yearsRegion[j].text + "_"  + yearsStableType[k].text + "_" + yearsStable[l].text + ".csv"
 
                     try:
-                        for m in range (1):
+                        pass
+                        ''''for m in range (1):
                             row = driver.find_element_by_xpath("/html/body/form[1]/table/tbody/tr[3]/td/div/div[1]/table/tbody/tr/td/div[3]/div[2]/table/tbody/tr[" + str(m + 3) +"]")
                             row = (row.text).replace(" ",",")
                             # print(row)
@@ -113,7 +114,7 @@ def descargarTablas():
                             f.close()
                         
                         df = pd.read_csv("tabla.txt")
-                        df.to_csv("tabla_de_ejemplo.csv", index=False)
+                        df.to_csv("tabla_de_ejemplo.csv", index=False)'''
                     except:
                         print("No se ha guardado la tabla.")
                         print(nombreArchivo)
