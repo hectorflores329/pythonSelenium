@@ -117,10 +117,10 @@ def descargarTablas():
                     yearsStable = stable.find_elements_by_tag_name("option")
 
                     tabla = driver.find_elements_by_class_name("xt")
-                    nombreArchivo = yearsValues[i].text + "_" + yearsRegion[j].text + "_"  + yearsStableType[k].text + "_" + yearsStable[l].text + ".xlsx"
+                    nombreArchivo = yearsValues[i].text + "_" + yearsRegion[j].text + "_"  + yearsStableType[k].text + "_" + yearsStable[l].text + ".csv"
 
                     try:
-                        saveCSV(tabla, yearsValues[i], yearsRegion[j], yearsStableType[k], yearsStable[l], nombreArchivo)
+                        saveCSV(tabla, yearsValues[i].text, yearsRegion[j].text, yearsStableType[k].text, yearsStable[l].text, nombreArchivo)
                         
                     except:
                         print("No se guardó el archivo.")
