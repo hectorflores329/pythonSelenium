@@ -42,8 +42,8 @@ def descargarTablas():
     yers = driver.find_element_by_xpath("/html/body/form[1]/table/tbody/tr[3]/td/div/div[1]/table/tbody/tr/td/div[2]/div/div[2]/table/tbody/tr[1]/td[1]/table/tbody/tr[2]/td/div/table/tbody/tr/td/div[1]/select")
     yearsValues = yers.find_elements_by_tag_name("option")
 
-    for i in range(len(yearsValues)):
-    # for i in range(1):
+    # for i in range(len(yearsValues)):
+    for i in range(1):
         yers = driver.find_element_by_xpath("/html/body/form[1]/table/tbody/tr[3]/td/div/div[1]/table/tbody/tr/td/div[2]/div/div[2]/table/tbody/tr[1]/td[1]/table/tbody/tr[2]/td/div/table/tbody/tr/td/div[1]/select")
         yearsValues = yers.find_elements_by_tag_name("option")
 
