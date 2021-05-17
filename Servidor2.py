@@ -56,8 +56,8 @@ def descargarTablas():
         region = driver.find_element_by_xpath("/html/body/form[1]/table/tbody/tr[3]/td/div/div[1]/table/tbody/tr/td/div[2]/div/div[2]/table/tbody/tr[2]/td[1]/div/table/tbody/tr[2]/td[1]/div/table/tbody/tr/td/div[1]/select")
         yearsRegion = region.find_elements_by_tag_name("option")
 
-        # for j in range(len(yearsRegion)):
-        for j in range(1):
+        for j in range(len(yearsRegion)):
+        # for j in range(1):
             region = driver.find_element_by_xpath("/html/body/form[1]/table/tbody/tr[3]/td/div/div[1]/table/tbody/tr/td/div[2]/div/div[2]/table/tbody/tr[2]/td[1]/div/table/tbody/tr[2]/td[1]/div/table/tbody/tr/td/div[1]/select")
             yearsRegion = region.find_elements_by_tag_name("option")
 
@@ -71,8 +71,8 @@ def descargarTablas():
             stableType = driver.find_element_by_xpath("/html/body/form[1]/table/tbody/tr[3]/td/div/div[1]/table/tbody/tr/td/div[2]/div/div[2]/table/tbody/tr[2]/td[2]/div/table/tbody/tr[2]/td[1]/div/table/tbody/tr/td/div[1]/select")
             yearsStableType = stableType.find_elements_by_tag_name("option")
             
-            # for k in range(len(yearsStableType)):
-            for k in range(1):
+            for k in range(len(yearsStableType)):
+            # for k in range(1):
                 stableType = driver.find_element_by_xpath("/html/body/form[1]/table/tbody/tr[3]/td/div/div[1]/table/tbody/tr/td/div[2]/div/div[2]/table/tbody/tr[2]/td[2]/div/table/tbody/tr[2]/td[1]/div/table/tbody/tr/td/div[1]/select")
                 yearsStableType = stableType.find_elements_by_tag_name("option")
 
@@ -86,8 +86,8 @@ def descargarTablas():
                 stable = stableType = driver.find_element_by_xpath("/html/body/form[1]/table/tbody/tr[3]/td/div/div[1]/table/tbody/tr/td/div[2]/div/div[2]/table/tbody/tr[2]/td[3]/div/table/tbody/tr[2]/td/div/table/tbody/tr/td/div[1]/select")
                 yearsStable = stable.find_elements_by_tag_name("option")
 
-                # for l in range(len(yearsStable)):
-                for l in range(1):
+                for l in range(len(yearsStable)):
+                # for l in range(1):
                     stable = stableType = driver.find_element_by_xpath("/html/body/form[1]/table/tbody/tr[3]/td/div/div[1]/table/tbody/tr/td/div[2]/div/div[2]/table/tbody/tr[2]/td[3]/div/table/tbody/tr[2]/td/div/table/tbody/tr/td/div[1]/select")
                     yearsStable = stable.find_elements_by_tag_name("option")
 
