@@ -25,7 +25,8 @@ jobs:
     - name: Running code
       run: |
 
-        python Test.py
+        # python Test.py
+        echo "Hola"
 
     - uses: stefanzweifel/git-auto-commit-action@v2
       with:
