@@ -52,6 +52,8 @@ def descargarTablas():
         yearsValues[i].click()
         time.sleep(1)
 
+        print(yearsValues[i].text)
+
         # Seleccionado regiones
         region = driver.find_element_by_xpath("/html/body/form[1]/table/tbody/tr[3]/td/div/div[1]/table/tbody/tr/td/div[2]/div/div[2]/table/tbody/tr[2]/td[1]/div/table/tbody/tr[2]/td[1]/div/table/tbody/tr/td/div[1]/select")
         yearsRegion = region.find_elements_by_tag_name("option")
@@ -66,6 +68,8 @@ def descargarTablas():
 
             yearsRegion[j].click()
             time.sleep(1)
+
+            print(yearsRegion[i].text)
 
             # Seleccionado tipo de establecimiento
             stableType = driver.find_element_by_xpath("/html/body/form[1]/table/tbody/tr[3]/td/div/div[1]/table/tbody/tr/td/div[2]/div/div[2]/table/tbody/tr[2]/td[2]/div/table/tbody/tr[2]/td[1]/div/table/tbody/tr/td/div[1]/select")
@@ -82,6 +86,8 @@ def descargarTablas():
                 yearsStableType[k].click()
                 time.sleep(1)
 
+                print(yearsStableType[i].text)
+
                 # Seleccionado establecimiento
                 stable = stableType = driver.find_element_by_xpath("/html/body/form[1]/table/tbody/tr[3]/td/div/div[1]/table/tbody/tr/td/div[2]/div/div[2]/table/tbody/tr[2]/td[3]/div/table/tbody/tr[2]/td/div/table/tbody/tr/td/div[1]/select")
                 yearsStable = stable.find_elements_by_tag_name("option")
@@ -96,6 +102,8 @@ def descargarTablas():
 
                     yearsStable[l].click()
                     time.sleep(1)
+
+                    print(yearsStable[i].text)
 
                     boton = driver.find_elements_by_tag_name("button")
                     boton[0].click()
