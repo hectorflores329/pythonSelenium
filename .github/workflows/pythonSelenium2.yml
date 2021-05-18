@@ -25,7 +25,7 @@ jobs:
     - name: Running code
       run: |
 
-        python Servidor2.py
+        python Test.py
 
     - uses: stefanzweifel/git-auto-commit-action@v2
       with:
